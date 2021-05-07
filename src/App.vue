@@ -19,6 +19,7 @@
 <script>
 import PDFUploader from './components/PDFUploader.vue'
 import PDFViewer from './components/PDFViewer.vue'
+import Url from 'url-parse'
 
 export default {
   name: 'app',
@@ -29,8 +30,14 @@ export default {
   },
 
   data() {
+    const url = new Url(location.href, true);
+    const query = url.query;
+    const pdfUrl = `${query.url}?d=${new Date().getTime()}`;
+
     return {
-      url: process.env.VUE_APP_PDF_URL,
+      // url: process.env.VUE_APP_PDF_URL,
+      // url: [...new URLSearchParams(location.search).entries()].reduce((obj, e) => ({...obj, [e[0]]: e[1]}), {}).url + '?d=' + new Date().getTime(),
+      url: pdfUrl,
       documentError: undefined,
       enableUploader: process.env.VUE_APP_UPLOAD_ENABLED === 'true',
     };
