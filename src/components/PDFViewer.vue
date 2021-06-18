@@ -82,7 +82,7 @@ export default {
   data() {
     return {
       scale: undefined,
-      optimalScale: undefined,
+      optimalScale: 2.0,
       fit: undefined,
       currentPage: 1,
       pageCount: undefined,
