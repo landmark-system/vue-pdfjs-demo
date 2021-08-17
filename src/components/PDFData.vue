@@ -24,7 +24,7 @@ function getPages(pdf, first, last) {
   return Promise.all(allPages);
 }
 
-const BUFFER_LENGTH = 10;
+const BUFFER_LENGTH = process.env.VUE_APP_PDF_BUFFER_LENGTH;
 function getDefaults() {
   return {
     pages: [],
