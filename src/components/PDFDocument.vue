@@ -6,7 +6,7 @@
     :enable-page-jump="true"
     @page-jump="onPageJump"
     @pages-fetch="onPagesFetch"
-    @pages-reset="fitWidth"
+    @pages-reset="fitAuto"
     >
     <PDFPage
       v-bind="{scale, optimalScale, page, isPageFocused, isElementFocused}"
