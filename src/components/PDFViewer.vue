@@ -1,25 +1,28 @@
 <template>
   <div class="pdf-viewer">
-    <header class="pdf-viewer__header box-shadow">
-      <div class="pdf-preview-toggle">
-        <a @click.prevent.stop="togglePreview" class="icon"><PreviewIcon /></a>
-      </div>
+
+    <div
+      class="controller floated top right"
+    >
+
+      <PDFPaginator
+        v-model="currentPage"
+        :pageCount="pageCount"
+      />
+
+    </div>
+
+    <div
+      class="controller floated bottom right"
+    >
 
       <PDFZoom
         :scale="scale"
         @change="updateScale"
         @fit="updateFit"
-        class="header-item"
-        />
+      />
 
-      <PDFPaginator
-        v-model="currentPage"
-        :pageCount="pageCount"
-        class="header-item"
-        />
-
-      <slot name="header"></slot>
-    </header>
+    </div>
 
     <PDFData
       class="pdf-viewer__main"
@@ -150,7 +153,7 @@ header {
 
 .pdf-viewer .pdf-viewer__document,
 .pdf-viewer .pdf-viewer__preview {
-  top: 70px;
+  top: 0;
 }
 
 .pdf-viewer__preview {
@@ -160,7 +163,7 @@ header {
 }
 
 .pdf-viewer__document {
-  top: 70px;
+  top: 0;
   width: 100%;
   left: 0;
 }
@@ -168,6 +171,40 @@ header {
 .pdf-viewer__document.preview-enabled {
   width: 85%;
   left: 15%;
+}
+
+.floated {
+  position: fixed;
+  z-index: 100;
+}
+
+.floated.top {
+  top: 0;
+}
+
+.floated.bottom {
+  bottom: 0;
+}
+
+.floated.right {
+  right: 0;
+}
+
+.floated.left {
+  left: 0;
+}
+
+.controller {
+  background: rgba(50, 50, 50, .25);
+  padding: 0.25em;
+}
+
+.controller.floated.top.right {
+  border-bottom-left-radius: .25em;
+}
+
+.controller.floated.bottom.right {
+  border-top-left-radius: .25em;
 }
 
 @media print {
