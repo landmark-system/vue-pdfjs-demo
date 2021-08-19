@@ -78,4 +78,10 @@ export default {
   height: 1.5em;
   font-size: 1.5em;
 }
+.floated > .pdf-zoom a {
+  float: none;
+  background: none;
+  border: none;
+  margin: .125em .25em;
+}
 </style>
